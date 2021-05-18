@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="resource.PhongBan.PhongBan"
+            prefHeight="400.0" prefWidth="600.0">
+    <TableView fx:id="tablePhongBan" layoutX="-1.0" layoutY="49.0" onMouseClicked="#getSelectedPB" prefHeight="450.0" prefWidth="1280.0">
+        <columns>
+            <TableColumn fx:id="maPBColum" prefWidth="320.0" text="MÃ PHÒNG BAN" />
+            <TableColumn fx:id="tenPBColum" prefWidth="320.0" text="TÊN PHÒNG BAN" />
+            <TableColumn fx:id="sdtPBColum" prefWidth="320.0" text="SỐ ĐIỆN THOAI" />
+            <TableColumn fx:id="diachiPBColum" prefWidth="320.0" text="ĐỊA CHỈ" />
+        </columns>
+    </TableView>
+    <Button fx:id="addBtn" layoutX="23.0" layoutY="532.0" mnemonicParsing="false" onAction="#ADD" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #0589ff;" text="ADD" textFill="#faf605" />
+    <Button fx:id="deleteBtn" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #e50202;" text="DELETE" textFill="#edf500" />
+    <Button fx:id="updateBtn" layoutX="23.0" layoutY="592.0" mnemonicParsing="false" onAction="#edit" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #0589ff;" text="UPDATE" textFill="#f0fd02" />
+    <TextField fx:id="maPBText" layoutX="269.0" layoutY="532.0" prefHeight="40.0" prefWidth="190.0" promptText="Mã phòng ban" />
+    <TextField fx:id="tenPBText" layoutX="269.0" layoutY="598.0" prefHeight="40.0" prefWidth="190.0" promptText="Tên phòng ban" />
+    <TextField fx:id="sdtPBText" layoutX="621.0" layoutY="532.0" prefHeight="40.0" prefWidth="190.0" promptText="Số điện thoại" />
+    <TextField fx:id="diachiPBText" layoutX="621.0" layoutY="598.0" prefHeight="40.0" prefWidth="190.0" promptText="Địa chỉ" />
+    <Button fx:id="cancelButton" layoutX="1113.0" layoutY="638.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #e50202;" text="CANCEL" textFill="#f2ff04" />
+    <Label alignment="CENTER" layoutX="-2.0" prefHeight="50.0" prefWidth="1280.0" text="PHÒNG BAN" textAlignment="CENTER" />
+</AnchorPane>

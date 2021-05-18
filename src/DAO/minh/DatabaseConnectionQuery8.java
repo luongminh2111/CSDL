@@ -1,0 +1,57 @@
+package DAO.minh;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import query.MinhQuery.cau8.Class8;
+
+import java.sql.*;
+
+public class DatabaseConnectionQuery8 {
+
+    public Connection DatabaseLink;
+
+    public Connection ConnectionDb() {
+        String DatabaseName = "QLNS";
+        String DatabaseUser = "postgres";
+        String Databasepass = "luongminh";
+        String url = "jdbc:postgresql://localhost:5432/" + DatabaseName;
+        try {
+            Class.forName("org.postgresql.Driver");
+            DatabaseLink = DriverManager.getConnection(url, DatabaseUser, Databasepass);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+        return DatabaseLink;
+    }
+    public static ObservableList<Class8> getInf8()
+    {
+        DatabaseConnectionQuery8 connectionNow = new DatabaseConnectionQuery8();
+        Connection connectDB = connectionNow.ConnectionDb();
+        ObservableList<Class8> listInf8 = FXCollections.observableArrayList();
+        try
+        {
+            PreparedStatement preparedStatement = connectDB.prepareStatement
+                    ("select tt.manv,cv.tencv,pb.tenpb, tt.ngaytiepnhan,tt.ngayketthuc\n" +
+                            "from thangtien tt ,chucvu cv, phongban pb\n" +
+                            "where tt.manv='20184150' and tt.macv=cv.macv and pb.mapb=tt.mapb");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+            {
+                listInf8.add(new Class8(
+                        resultSet.getString("manv"),
+                        resultSet.getString("tencv"),
+                        resultSet.getString("tenpb"),
+                        Date.valueOf(resultSet.getString("ngayketthuc")),
+                        Date.valueOf((resultSet.getString("ngaytiepnhan")))));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            e.getCause();
+        }
+        return  listInf8;
+    }
+}
